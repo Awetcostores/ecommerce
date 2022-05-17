@@ -165,7 +165,7 @@ export default function Login() {
           <div className={classes.details}>
             <EmailIcon className={classes.icon} />
             <Typography variant="subtitle1" className={classes.text}>
-              Adeshexglobalconcept@gmail.com
+              Awetco00@gmail.com
             </Typography>
           </div>
         </div>
