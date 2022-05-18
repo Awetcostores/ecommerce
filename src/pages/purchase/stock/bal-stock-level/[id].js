@@ -35,7 +35,7 @@ const EditProductBalStock = () => {
   return (
     <>
       <Head>
-        <title>Update Product | Adeshex Nigeria Limited</title>
+        <title>Update Product | Awetco Stores</title>
       </Head>
       <Box
         component="main"
