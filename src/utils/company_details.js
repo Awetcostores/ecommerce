@@ -1,4 +1,4 @@
-export const COMPANY_NAME = "Adeshex Global"
-export const COMPANY_EMAIL = "Adeshexglobalconcept@gmail.com"
-export const COMPANY_ADDRESS = "Shop 1 and 2 oranmiayan tower lagere ile ife."
-export const COMPANY_PHONE = " +2348107895502"
+export const COMPANY_NAME = "Awetco Stores"
+export const COMPANY_EMAIL = "Awetco00@gmail.com"
+export const COMPANY_ADDRESS = "No. 180, Hezekiah Oluwasanmi Rd7, Ile-Ife, Osun State."
+export const COMPANY_PHONE = " +2347032529199, +2348060410828, +2348117729805."
