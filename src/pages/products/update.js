@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { getSuppliers } from "src/statesManagement/store/actions/supplier-action";
 import { getBrands } from "src/statesManagement/store/actions/brand-action";
 import { useSnackbar } from "notistack";
+import { COMPANY_NAME } from "src/utils/company_details";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("src/components/navbar-branch-indicator"), {
   ssr: false,
@@ -30,13 +31,13 @@ const Editproduct = () => {
     !userInfo && router.push("/auth");
     setid(query.id);
     getProduct({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
-    getSuppliers(dispatch);
+    getSuppliers({dispatch, enqueueSnackbar});
     getBrands(dispatch);
   }, [query.id]);
   return (
     <>
       <Head>
-        <title>Products | Material Kit</title>
+        <title>Products | {COMPANY_NAME}</title>
       </Head>
       <Box
         component="main"

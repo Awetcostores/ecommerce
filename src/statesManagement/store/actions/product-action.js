@@ -233,7 +233,7 @@ export const updateProduct = async ({ dispatch, product, productId, Router, enqu
         variant: "success",
       });
 
-    // Router.reload(window.location.pathname);
+    Router.push("/products");
   } catch (error) {
     dispatch({
       type: UPDATE_PRODUCT_FAIL,

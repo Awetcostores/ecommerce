@@ -1,22 +1,19 @@
+import { Box, Card, CardContent, CardHeader, Container, Divider, Typography } from "@mui/material";
 import Head from "next/head";
-import { Box, Container, Card, CardHeader, Divider, Typography, CardContent } from "@mui/material";
-import { ProductListToolbar } from "../../components/product/product-list-toolbar";
-import { DashboardLayout } from "../../components/dashboard-layout";
-import ProductTable from "src/components/product/product-table";
-import dynamic from "next/dynamic";
-import { useContext } from "react";
-import { Store } from "src/statesManagement/store/store";
 import { useRouter } from "next/router";
-import {
-  getOutOfStock,
-  getProduct,
-  getProductPrice,
-} from "src/statesManagement/store/actions/product-action";
-import { useEffect } from "react";
-
-import Loading from "src/components/loading/Loading";
 import { useSnackbar } from "notistack";
+import { useContext, useEffect } from "react";
+import Loading from "src/components/loading/Loading";
+import dynamic from "next/dynamic";
+import ProductTable from "src/components/product/product-table";
+import {
+  getProduct
+} from "src/statesManagement/store/actions/product-action";
+import { getSuppliers } from "src/statesManagement/store/actions/supplier-action";
+import { Store } from "src/statesManagement/store/store";
 import { COMPANY_NAME } from "src/utils/company_details";
+import { DashboardLayout } from "../../components/dashboard-layout";
+import { ProductListToolbar } from "../../components/product/product-list-toolbar";
 
 const DynamicComponentWithNoSSR = dynamic(() => import("src/components/navbar-branch-indicator"), {
   ssr: false,
@@ -31,8 +28,8 @@ const Products = () => {
   useEffect(() => {
     !userInfo && router.push("/auth");
     getProduct({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
-    // getProductPrice(dispatch);
-    // getOutOfStock(dispatch);
+    getSuppliers({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
+   
   }, []);
   return (
     <>

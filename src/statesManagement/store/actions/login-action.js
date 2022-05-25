@@ -1,8 +1,7 @@
 import Cookies from "js-cookie";
 import { makeNetworkCall } from "src/network";
-import { LOGIN_FAIL, LOGIN_SUCCESS, LOGIN_REQUEST } from "../constants/index";
+import { LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS } from "../constants/index";
 import { getBrands } from "./brand-action";
-import { getCustomers } from "./customer-action";
 import { getPaymentMethod } from "./payment-type-action";
 import { getProduct } from "./product-action";
 import { getPurchase } from "./purchase-action";
@@ -38,7 +37,7 @@ export const loginAction = async ({ loginDetails, dispatch, enqueueSnackbar }) =
     getPurchase({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
     getStaff({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
     getPaymentMethod({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
-    getCustomers({dispatch:dispatch, enqueueSnackbar:enqueueSnackbar})
+   
    
   } catch (error) {
     dispatch({

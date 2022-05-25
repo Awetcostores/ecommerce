@@ -4,24 +4,19 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Divider,
-  InputAdornment,
-  Typography,
-  Grid,
+  Divider, Grid, Typography
 } from "@mui/material";
+import { Form, Formik } from "formik";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
+import { useContext } from "react";
+import { updateProduct } from "src/statesManagement/store/actions/product-action";
+import { Store } from "src/statesManagement/store/store";
+import * as yup from "yup";
 import { Download as DownloadIcon } from "../../icons/download";
 import { Upload as UploadIcon } from "../../icons/upload";
-import { CustomTextField } from "../basicInputs";
-import ListIcon from "@mui/icons-material/List";
-import * as yup from "yup";
-import { Formik, Form } from "formik";
-import { CustomButton, CustomSelect } from "../basicInputs";
-import { useContext, useState } from "react";
-import { Store } from "src/statesManagement/store/store";
-import { useRouter } from "next/router";
-import NextLink from "next/link";
-import { updateProduct } from "src/statesManagement/store/actions/product-action";
-import { useSnackbar } from "notistack";
+import { CustomButton, CustomSelect, CustomTextField } from "../basicInputs";
 
 export const EditProductForm = (props) => {
   const { title, id } = props;
@@ -30,7 +25,7 @@ export const EditProductForm = (props) => {
   const { loading, suppliers, brands, products } = state;
   let oneProduct = [];
   oneProduct = products.filter((pro) => pro._id === id);
-console.log(oneProduct);
+
   const INITIAL_FORM_VALUES = {
     product_name:
       oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
@@ -39,6 +34,10 @@ console.log(oneProduct);
     price:
       oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
         ? oneProduct[0].product_price
+        : "",
+        selling_price:
+      oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
+        ? oneProduct[0].product_selling_price
         : "",
     product_brand:
       oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
@@ -62,6 +61,7 @@ console.log(oneProduct);
     product_brand: yup.string(),
     supplier: yup.string(),
     price: yup.number().integer().typeError("Price must be a number"),
+    selling_price: yup.number().integer().typeError("Selling Price must be a number"),
     quantity: yup.number().integer().typeError("Quantity must be a number"),
   });
 
@@ -71,16 +71,17 @@ console.log(oneProduct);
     const product = {
       ...values,
       price: Number(values.price),
+      product_selling_price: Number(values.selling_price),
       quantity: Number(values.quantity),
     };
     updateProduct({
       dispatch: dispatch,
       product: product,
       productId: id,
-      Router: Router,
+      Router,
       enqueueSnackbar: enqueueSnackbar,
     });
-    console.log(product);
+
   };
   return (
     <Box {...props}>
@@ -153,8 +154,11 @@ console.log(oneProduct);
                       <CustomTextField name="price" label="Cost Price" />
                     </Grid>
                     <Grid item xs={12}>
-                      <CustomTextField name="quantity" label="Quantity" />
+                      <CustomTextField name="selling_price" label="Selling Price" />
                     </Grid>
+                    {/* <Grid item xs={12}>
+                      <CustomTextField name="quantity" label="Quantity" />
+                    </Grid> */}
 
                     <Grid item xs={12}>
                       <CustomButton disabled={loading ? true : false}> Update Product</CustomButton>

@@ -30,6 +30,7 @@ const EditProduct = () => {
     !userInfo && router.push("/auth");
     setid(query.id);
     getProduct({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
+    
   }, [query.id]);
 
   return (

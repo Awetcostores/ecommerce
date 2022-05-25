@@ -31,6 +31,7 @@ const EditProducts = () => {
   useEffect(() => {
     !userInfo && router.push("/auth");
     getProduct({ dispatch: dispatch, enqueueSnackbar: enqueueSnackbar });
+    alert("success")
     // getProductPrice(dispatch);
     // getOutOfStock(dispatch);
   }, []);
