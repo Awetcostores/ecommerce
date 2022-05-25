@@ -37,7 +37,7 @@ export const EditProductForm = (props) => {
         : "",
         selling_price:
       oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
-        ? oneProduct[0].product_selling_price
+        ? oneProduct[0].selling_price
         : "",
     product_brand:
       oneProduct.length > 0 && typeof oneProduct[0] != "undefined"
@@ -71,7 +71,7 @@ export const EditProductForm = (props) => {
     const product = {
       ...values,
       price: Number(values.price),
-      product_selling_price: Number(values.selling_price),
+      selling_price: Number(values.selling_price),
       quantity: Number(values.quantity),
     };
     updateProduct({

@@ -75,7 +75,7 @@ export const ProductListToolbar = (props) => {
     const product = {
       product_name: values.name,
       product_price: values.price,
-      product_selling_price:values.selling_price,
+      selling_price:values.selling_price,
       product_brand: values.brand,
       product_barcode: values.barcode,
       supplier: values.supplier,
