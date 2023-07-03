@@ -25,7 +25,7 @@ const ReceiptReprint = (props) => {
   const { router } = props;
   const [receipts, setreceipts] = useState([]);
   useEffect(() => {
-    setreceipts(JSON.parse(router.query.receipts));
+    setreceipts(JSON.parse(router?.query?.receipts));
     const timer = setTimeout(() => {
       handlePrint();
     }, 500);

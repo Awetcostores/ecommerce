@@ -33,6 +33,7 @@ const initialState = {
   profitOrLossReport: [],
   productPrice: [],
   stockLevel: [],
+  addCard: Cookies.get("addCard") ? JSON.parse(Cookies.get("addCard")) : [],
   paymentType: Cookies.get("paymentType") ? JSON.parse(Cookies.get("paymentType")) : [],
   staff: Cookies.get("staff") ? JSON.parse(Cookies.get("staff")) : [],
   purchase: Cookies.get("purchases") ? JSON.parse(Cookies.get("purchases")) : [],

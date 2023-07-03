@@ -180,6 +180,9 @@ import {
   GET_RECEIPT_REPRINT_REQUEST,
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  ADD_CARD_REQUEST,
+  ADD_CARD_SUCCESS,
+  ADD_CARD_FAIL,
 } from "../constants";
 
 // const rootReducers = combineReducers({
@@ -188,7 +191,16 @@ import {
 // });
 
 const rootReducers = (state, action) => {
+  
   switch (action.type) {
+     //Add card
+    case ADD_CARD_REQUEST:
+      return { ...state, loading: true };
+    case ADD_CARD_SUCCESS:
+      return { ...state, loading: false, addCard: action?.payload };
+    case ADD_CARD_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    
     // Login Reducers
     case LOGIN_REQUEST:
       return { ...state, loading: true };
