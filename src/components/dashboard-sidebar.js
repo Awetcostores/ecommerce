@@ -69,7 +69,12 @@ const items = [
     // title5: "Manage Supplier Ledger",
     // href5: "/managesuppliers",
   },
-
+  {
+    href: "/add-card",
+    icon: <AssignmentIndIcon fontSize="small" />,
+    title: "Card Management",
+    mainTitle: "Add Card",
+  },
   {
     href: "/sales",
     icon: <TrendingDownIcon fontSize="small" />,
