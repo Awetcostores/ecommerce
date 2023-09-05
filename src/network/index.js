@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 // const testUrl = "https://dayon-v1.herokuapp.com";
-const liveUrl = "https://awetco.herokuapp.com";
-
+// const liveUrl = "https://awetco.herokuapp.com";
+const liveUrl = "https://awetco-stores.onrender.com/";
 const baseUrl = `${liveUrl}/api/v1`;
 
 export const RequestMethod = {
